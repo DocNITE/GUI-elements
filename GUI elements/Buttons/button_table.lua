@@ -13,7 +13,7 @@
 --[[    Закрывать так же через CloseCursor();                ]]--
 --[[---------------------------------------------------------]]--
 
-function TestFunction(playerid) 
+function TestFunction(playerid, button, id) 
 	if IsButtonVisible(playerid, "CHECK_HP") == false and IsButtonVisible(playerid, "CLOSE_BUTTONS") == false then
 		SendPlayerMessage(playerid, 0, 255, 0, "Хей, ты открыл кнопки! =)")
 		OpenButton(playerid, "CHECK_HP")    
@@ -22,7 +22,7 @@ function TestFunction(playerid)
 	end
 end
 
-function ZacritKnopki(playerid)
+function ZacritKnopki(playerid, button, id)
 	SendPlayerMessage(playerid, 255, 0, 0, "Вы спрятали кнопки! =(")
 	CloseButton(playerid, "CHECK_HP")
 	CloseButton(playerid, "CLOSE_BUTTONS")
@@ -32,7 +32,7 @@ function ZacritKnopki(playerid)
 	end
 end
 
-function ClearChat(playerid)
+function ClearChat(playerid, button, id)
 	for i = 0, 32 do
 		SendPlayerMessage(playerid, 255, 0, 0, " ")
 	end
@@ -59,7 +59,7 @@ AddButton({
 	func = TestFunction,   					  --// Вызываемая функция кнопкой. Если не нужно вызывать, то просто уберите эту строку.
 })
 
-function CheckHealPoint(playerid)
+function CheckHealPoint(playerid, button, id)
 	SendPlayerMessage(playerid, 255, 255, 255, " Здоровья: "..GetPlayerHealth(playerid)..", Макс. здоровья: "..GetPlayerMaxHealth(playerid))
 end
 
