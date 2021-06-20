@@ -66,6 +66,7 @@ end
 AddButton({
 	name = "CHECK_HP",
 	virt_pixel = 1,
+	center = 1,
 	x = 2500,
 	y = 500,
 	max_x = 3000,
@@ -84,6 +85,7 @@ AddButton({
 AddButton({
 	name = "CLOSE_BUTTONS",
 	virt_pixel = 1,
+	center = 0,
 	x = 2000,
 	y = 500,
 	max_x = 2500,
@@ -102,6 +104,7 @@ AddButton({
 AddButton({
 	name = "CLEAR_CHAT",
 	virt_pixel = 1,
+	center = 0,
 	x = 3000,
 	y = 500,
 	max_x = 3500,

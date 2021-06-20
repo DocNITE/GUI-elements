@@ -18,16 +18,16 @@ function InitButtons()
 end
 
 function AddButton(button)
-	if button.name and button.virt_pixel and button.x and button.y and button.max_x and button.max_y and button.texture and button.texture_pressed and button.text and button.rgb and type(button.func) == "function" then
+	if button.name and button.virt_pixel and button.center and button.x and button.y and button.max_x and button.max_y and button.texture and button.texture_pressed and button.text and button.rgb and type(button.func) == "function" then
 		print("Button '"..button.name.."' has been added.")
 		--print(""..tostring(button.func).." ")
 		for i = 0, GetMaxPlayers() do
-			table.insert(GUI_Playa[i].Buttons, {name = button.name, virt_pixel = button.virt_pixel, x = button.x, y = button.y, max_x = button.max_x, max_y = button.max_y, texture = button.texture, texture_pressed = button.texture_pressed, text = button.text, rgb = button.rgb, func = button.func, visible = false, pressed = false})
+			table.insert(GUI_Playa[i].Buttons, {name = button.name, virt_pixel = button.virt_pixel, center = button.center x = button.x, y = button.y, max_x = button.max_x, max_y = button.max_y, texture = button.texture, texture_pressed = button.texture_pressed, text = button.text, rgb = button.rgb, func = button.func, visible = false, pressed = false})
 		end
 	elseif button.name and button.x and button.y and button.max_x and button.max_y and button.texture and button.texture_pressed and button.text and button.rgb then
 		print("Button '"..button.name.."' has been added.")
 		for i = 0, GetMaxPlayers() do
-			table.insert(GUI_Playa[i].Buttons, {name = button.name, virt_pixel = button.virt_pixel, x = button.x, y = button.y, max_x = button.max_x, max_y = button.max_y, texture = button.texture, texture_pressed = button.texture_pressed, text = button.text, rgb = button.rgb, func = false, visible = false, pressed = false})
+			table.insert(GUI_Playa[i].Buttons, {name = button.name, virt_pixel = button.virt_pixel, center = button.center, x = button.x, y = button.y, max_x = button.max_x, max_y = button.max_y, texture = button.texture, texture_pressed = button.texture_pressed, text = button.text, rgb = button.rgb, func = false, visible = false, pressed = false})
 		end
 	else
 		print("[ERROR]: Wrong syntax!")
@@ -94,6 +94,7 @@ function OpenButton(pid, button)  --// Show button
 		if k.name == button then
 			k.visible = true;
 			ShowTexture(pid, GUI_Playa[pid].Buttons_texture[button])
+			local stling = string.len(k.text)*10;
 			if k.virt_pixel == 0 then
 				GUI_Playa[pid].Buttons_draws[button] = CreatePlayerDraw(pid, anx(pid, (k.x + 4)), any(pid, (k.max_y - ((k.max_y - k.y)/1.5))), k.text, "Font_Old_10_White_Hi.tga", 255, 255, 255)
 				ShowPlayerDraw(pid, GUI_Playa[pid].Buttons_draws[button])
@@ -102,6 +103,12 @@ function OpenButton(pid, button)  --// Show button
 				else
 					UpdateTexture(GUI_Playa[pid].Buttons_texture[button], anx(pid, k.x), any(pid, k.y), anx(pid, k.max_x), any(pid ,k.max_y), k.texture)
 				end
+				
+							
+				if center == 1 then
+					SetPlayerDrawPos(pid, GUI_Playa[pid].Buttons_draws[button], anx(pid, (k.max_x - k.x) - ((stling)/2)), any(pid, (k.max_y - ((k.max_y - k.y)/1.5))))
+				end
+				
 			else
 				GUI_Playa[pid].Buttons_draws[button] = CreatePlayerDraw(pid, (k.x + 20), (k.max_y - ((k.max_y - k.y)/1.5)), k.text, "Font_Old_10_White_Hi.tga", 255, 255, 255)
 				ShowPlayerDraw(pid, GUI_Playa[pid].Buttons_draws[button])
@@ -109,6 +116,10 @@ function OpenButton(pid, button)  --// Show button
 					UpdateTexture(GUI_Playa[pid].Buttons_texture[button], 0, 0, 0, 0, k.texture)
 				else
 					UpdateTexture(GUI_Playa[pid].Buttons_texture[button], k.x, k.y, k.max_x, k.max_y, k.texture)
+				end
+				
+				if center == 1 then
+					SetPlayerDrawPos(pid, GUI_Playa[pid].Buttons_draws[button], (k.max_x - k.x) - ((stling)/2), (k.max_y - ((k.max_y - k.y)/1.5)))
 				end
 			end
 			return;
@@ -135,7 +146,5 @@ function IsButtonVisible(pid, button)
 		end
 	end
 end
-
-InitButtons();
 
 require "Doc Engine/GUI elements/Buttons/button_table"

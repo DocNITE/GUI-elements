@@ -16,5 +16,7 @@ require "Doc Engine/GUI elements/Buttons/button"
 require "Doc Engine/GUI elements/Textbox/textbox"
 require "Doc Engine/GUI elements/Callbacks/OnPlayerMouse"
 
+InitButtons()
+InitTextBox()
 
 print("-=================================-\n        GUI elements v0.1")

@@ -102,5 +102,3 @@ AddTextBox({
 	rgb = {255, 255, 255, 255}
 })
 
-InitTextBox()
-
