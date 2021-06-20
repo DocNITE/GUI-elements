@@ -94,7 +94,6 @@ function OpenButton(pid, button)  --// Show button
 		if k.name == button then
 			k.visible = true;
 			ShowTexture(pid, GUI_Playa[pid].Buttons_texture[button])
-			local stling = string.len(k.text)*10;
 			if k.virt_pixel == 0 then
 				GUI_Playa[pid].Buttons_draws[button] = CreatePlayerDraw(pid, anx(pid, (k.x + 4)), any(pid, (k.max_y - ((k.max_y - k.y)/1.5))), k.text, "Font_Old_10_White_Hi.tga", 255, 255, 255)
 				ShowPlayerDraw(pid, GUI_Playa[pid].Buttons_draws[button])
@@ -104,7 +103,7 @@ function OpenButton(pid, button)  --// Show button
 					UpdateTexture(GUI_Playa[pid].Buttons_texture[button], anx(pid, k.x), any(pid, k.y), anx(pid, k.max_x), any(pid ,k.max_y), k.texture)
 				end
 				
-							
+				local stling = string.len(k.text)*10;
 				if k.center == 1 then
 					SetPlayerDrawPos(pid, GUI_Playa[pid].Buttons_draws[button], anx(pid, (k.max_x - (k.max_x - k.x)/2) - ((stling)/2)), any(pid, (k.max_y - ((k.max_y - k.y)/1.5))))
 				end
@@ -118,6 +117,7 @@ function OpenButton(pid, button)  --// Show button
 					UpdateTexture(GUI_Playa[pid].Buttons_texture[button], k.x, k.y, k.max_x, k.max_y, k.texture)
 				end
 				
+				local stling = string.len(k.text)*50;
 				if k.center == 1 then
 					SetPlayerDrawPos(pid, GUI_Playa[pid].Buttons_draws[button], ((k.max_x - (k.max_x - k.x)/2) - ((stling)/2)), (k.max_y - ((k.max_y - k.y)/1.5)))
 				end
