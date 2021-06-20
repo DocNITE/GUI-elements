@@ -16,4 +16,17 @@ require "Doc Engine/GUI elements/Buttons/button"
 require "Doc Engine/GUI elements/Textbox/textbox"
 require "Doc Engine/GUI elements/Callbacks/OnPlayerMouse"
 
+_OnGamemodeInit = OnGamemodeInit;
+
+function _OnGamemodeInit()
+	InitButtons();
+	InitTextBox()
+	
+	OnGamemodeInit();
+end
+
+function OnGamemodeInit()
+end
+
+
 print("-=================================-\n        GUI elements v0.1")
