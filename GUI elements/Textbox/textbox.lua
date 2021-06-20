@@ -96,11 +96,8 @@ AddTextBox({
 	y = 100,
 	max_x = 700,
 	max_y = 200,
-	texture = "gui_background",
+	texture = "menu_ingame",
 	place = 1,
 	text = {"Zdarova!", "Welcome to my server!"},
 	rgb = {255, 255, 255, 255}
 })
-
---InitTextBox()
-
