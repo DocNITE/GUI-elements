@@ -136,6 +136,4 @@ function IsButtonVisible(pid, button)
 	end
 end
 
-InitButtons();
-
 require "Doc Engine/GUI elements/Buttons/button_table"
