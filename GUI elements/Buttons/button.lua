@@ -105,8 +105,8 @@ function OpenButton(pid, button)  --// Show button
 				end
 				
 							
-				if center == 1 then
-					SetPlayerDrawPos(pid, GUI_Playa[pid].Buttons_draws[button], anx(pid, (k.max_x - k.x) - ((stling)/2)), any(pid, (k.max_y - ((k.max_y - k.y)/1.5))))
+				if k.center == 1 then
+					SetPlayerDrawPos(pid, GUI_Playa[pid].Buttons_draws[button], anx(pid, (k.max_x - (k.max_x - k.x)/2) - ((stling)/2)), any(pid, (k.max_y - ((k.max_y - k.y)/1.5))))
 				end
 				
 			else
@@ -118,8 +118,8 @@ function OpenButton(pid, button)  --// Show button
 					UpdateTexture(GUI_Playa[pid].Buttons_texture[button], k.x, k.y, k.max_x, k.max_y, k.texture)
 				end
 				
-				if center == 1 then
-					SetPlayerDrawPos(pid, GUI_Playa[pid].Buttons_draws[button], (k.max_x - k.x) - ((stling)/2), (k.max_y - ((k.max_y - k.y)/1.5)))
+				if k.center == 1 then
+					SetPlayerDrawPos(pid, GUI_Playa[pid].Buttons_draws[button], ((k.max_x - (k.max_x - k.x)/2) - ((stling)/2)), (k.max_y - ((k.max_y - k.y)/1.5)))
 				end
 			end
 			return;
