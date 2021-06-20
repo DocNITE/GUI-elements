@@ -22,7 +22,7 @@ function AddButton(button)
 		print("Button '"..button.name.."' has been added.")
 		--print(""..tostring(button.func).." ")
 		for i = 0, GetMaxPlayers() do
-			table.insert(GUI_Playa[i].Buttons, {name = button.name, virt_pixel = button.virt_pixel, center = button.center x = button.x, y = button.y, max_x = button.max_x, max_y = button.max_y, texture = button.texture, texture_pressed = button.texture_pressed, text = button.text, rgb = button.rgb, func = button.func, visible = false, pressed = false})
+			table.insert(GUI_Playa[i].Buttons, {name = button.name, virt_pixel = button.virt_pixel, center = button.center, x = button.x, y = button.y, max_x = button.max_x, max_y = button.max_y, texture = button.texture, texture_pressed = button.texture_pressed, text = button.text, rgb = button.rgb, func = button.func, visible = false, pressed = false})
 		end
 	elseif button.name and button.x and button.y and button.max_x and button.max_y and button.texture and button.texture_pressed and button.text and button.rgb then
 		print("Button '"..button.name.."' has been added.")
