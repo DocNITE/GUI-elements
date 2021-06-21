@@ -11,12 +11,15 @@ for i = 0, GetMaxPlayers() do
 	GUI_Playa[i].IsOpen = false
 end
 
-require "Doc Engine/GUI elements/functions"
-require "Doc Engine/GUI elements/Buttons/button"
-require "Doc Engine/GUI elements/Textbox/textbox"
-require "Doc Engine/GUI elements/Callbacks/OnPlayerMouse"
+require "GUI elements/functions"
+require "GUI elements/Buttons/button"
+require "GUI elements/Textbox/textbox"
+require "GUI elements/Callbacks/OnPlayerMouse"
 
-InitButtons()
-InitTextBox()
+function InitElements() --// Вставьте в OnGamemodeInit()
+	InitButtons()
+	InitTextBox()
+end
+
 
 print("-=================================-\n        GUI elements v0.1")
