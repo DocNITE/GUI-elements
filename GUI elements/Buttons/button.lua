@@ -147,4 +147,4 @@ function IsButtonVisible(pid, button)
 	end
 end
 
-require "Doc Engine/GUI elements/Buttons/button_table"
+require "GUI elements/Buttons/button_table"
