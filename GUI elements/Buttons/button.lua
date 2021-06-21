@@ -49,12 +49,20 @@ end
 function SetNameButton(pid, button, nameid)
 	for j, k in ipairs(GUI_Playa[pid].Buttons) do
 		if k.name == button then
-			k.name = nameid;
+			k.text = nameid;
 			if k.virt_pixel == 0 then
 				UpdatePlayerDraw(pid, GUI_Playa[pid].Buttons_draws[button], anx(pid, (k.x + 4)), any(pid, (k.max_y - ((k.max_y - k.y)/1.5))), nameid, "Font_Old_10_White_Hi.tga", k.rgb.pressed[1], k.rgb.pressed[2], k.rgb.pressed[3], k.rgb.pressed[4])
 			else
 				UpdatePlayerDraw(pid, GUI_Playa[pid].Buttons_draws[button], (k.x + 20), (k.max_y - ((k.max_y - k.y)/1.5)), nameid, "Font_Old_10_White_Hi.tga", k.rgb.pressed[1], k.rgb.pressed[2], k.rgb.pressed[3], k.rgb.pressed[4])
 			end
+		end
+	end
+end
+
+function GetNameButton(pid, button)
+	for j, k in ipairs(GUI_Playa[pid].Buttons) do
+		if k.name == button then
+			return k.text;
 		end
 	end
 end
