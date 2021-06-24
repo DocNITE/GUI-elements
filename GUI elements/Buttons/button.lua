@@ -97,7 +97,7 @@ function SetPosButton(pid, button, pix, x, y)
 	end
 end
 
-function OpenButton(pid, button)  --// Show button
+function ShowButton(pid, button)  --// Show button
 	for j, k in ipairs(GUI_Playa[pid].Buttons) do
 		if k.name == button then
 			k.visible = true;
@@ -135,7 +135,7 @@ function OpenButton(pid, button)  --// Show button
 	end
 end
 
-function CloseButton(pid, button)  --// Hide button
+function HideButton(pid, button)  --// Hide button
 	for j, k in ipairs(GUI_Playa[pid].Buttons) do
 		if k.name == button then
 			k.visible = false;
@@ -146,6 +146,10 @@ function CloseButton(pid, button)  --// Hide button
 		end
 	end
 end
+
+-- Hook --
+OpenButton = ShowButton;
+CloseButton = HideButton;
 
 function IsButtonVisible(pid, button)
 	for j, k in ipairs(GUI_Playa[pid].Buttons) do

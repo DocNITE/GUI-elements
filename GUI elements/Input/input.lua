@@ -3,7 +3,7 @@
 --[[    Script:        inputs                                ]]--
 --[[---------------------------------------------------------]]--
 
-local TEXT_LINE = "_";
+local TEXT_LINE = "|";
 
 for i = 0, GetMaxPlayers() do
 	GUI_Playa[i].Input = {};

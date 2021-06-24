@@ -13,6 +13,8 @@ for i = 0, GetMaxPlayers() do
 	GUI_Playa[i].IsOpen = false
 end
 
+require "GUI elements/constants"
+
 -- Menu --
 require "GUI elements/functions"
 require "GUI elements/Buttons/button"
@@ -20,12 +22,15 @@ require "GUI elements/Textbox/textbox"
 -- Key --
 require "GUI elements/Input/key"
 require "GUI elements/Input/input"
+-- Bar --
+require "GUI elements/Bar/bar"
 
 require "GUI elements/Callbacks/OnPlayerMouse"
 
 function InitElements() --// Вставьте в OnGamemodeInit()
-	InitButtons()
-	InitTextBox()
+	InitButtons();
+	InitTextBox();
+	InitBars();
 end
 
 function KeyElements(pID, pKeyDown, pKeyUp) --// Вставьте в OnPlayerKey()
