@@ -13,6 +13,8 @@ for i = 0, GetMaxPlayers() do
 	GUI_Playa[i].IsOpen = false
 end
 
+require "GUI elements/constants"
+
 -- Menu --
 require "GUI elements/functions"
 require "GUI elements/Buttons/button"
