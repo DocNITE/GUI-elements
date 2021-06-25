@@ -24,6 +24,7 @@ require "GUI elements/Input/key"
 require "GUI elements/Input/input"
 -- Bar --
 require "GUI elements/Bar/bar"
+--require "GUI elements/Bar/bar_example"
 
 require "GUI elements/Callbacks/OnPlayerMouse"
 

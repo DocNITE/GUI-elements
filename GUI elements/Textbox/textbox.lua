@@ -28,7 +28,7 @@ function AddTextBox(box)
 	end
 end
 
-function OpenTextBox(pid, box)
+function ShowTextBox(pid, box)
 	for j, k in ipairs(GUI_Playa[pid].TextBox) do
 		if k.name == box then
 			k.visible = true;
@@ -78,7 +78,7 @@ function OpenTextBox(pid, box)
 	end
 end
 
-function CloseTextBox(pid, box)
+function HideTextBox(pid, box)
 	for j, k in ipairs(GUI_Playa[pid].TextBox) do
 		if k.name == box then
 			k.visible = false;
@@ -92,6 +92,9 @@ function CloseTextBox(pid, box)
 		end
 	end
 end
+
+OpenTextBox = ShowTextBox;
+CloseTextBox = HideTextBox;
 
 function IsTextBoxVisible(pid, box)
 	for j, k in ipairs(GUI_Playa[pid].TextBox) do

@@ -68,7 +68,7 @@ function SetPosInput(pid, input, pix, x, y)
 	end
 end
 
-function OpenInput(pid, button)  --// Show input
+function ShowInput(pid, button)  --// Show input
 	for j, k in ipairs(GUI_Playa[pid].Input) do
 		if k.name == button then
 			k.visible = true;
@@ -80,7 +80,7 @@ function OpenInput(pid, button)  --// Show input
 	end
 end
 
-function CloseInput(pid, input)  --// Hide input
+function HideInput(pid, input)  --// Hide input
 	for j, k in ipairs(GUI_Playa[pid].Input) do
 		if k.name == input then
 			k.visible = false;
@@ -90,6 +90,9 @@ function CloseInput(pid, input)  --// Hide input
 		end
 	end
 end
+
+OpenInput = ShowInput;
+CloseInput = HideInput;
 
 function IsInputVisible(pid, input)
 	for j, k in ipairs(GUI_Playa[pid].Input) do
