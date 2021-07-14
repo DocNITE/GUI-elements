@@ -51,7 +51,11 @@ function SetNameButton(pid, button, nameid)
 		if k.name == button then
 			k.text = nameid;
 			if k.virt_pixel == 0 then
-				UpdatePlayerDraw(pid, GUI_Playa[pid].Buttons_draws[button], anx(pid, (k.x + 4)), any(pid, (k.max_y - ((k.max_y - k.y)/1.5))), nameid, "Font_Old_10_White_Hi.tga", k.rgb.pressed[1], k.rgb.pressed[2], k.rgb.pressed[3], k.rgb.pressed[4])
+				if (k.max_y - k.y) <= 24 then
+					UpdatePlayerDraw(pid, GUI_Playa[pid].Buttons_draws[button], anx(pid, (k.x + 4)), any(pid, (k.y + 2)), nameid, "Font_Old_10_White_Hi.tga", k.rgb.pressed[1], k.rgb.pressed[2], k.rgb.pressed[3], k.rgb.pressed[4])
+				else
+					UpdatePlayerDraw(pid, GUI_Playa[pid].Buttons_draws[button], anx(pid, (k.x + 4)), any(pid, (k.max_y - ((k.max_y - k.y)/1.5))), nameid, "Font_Old_10_White_Hi.tga", k.rgb.pressed[1], k.rgb.pressed[2], k.rgb.pressed[3], k.rgb.pressed[4])
+				end
 			else
 				UpdatePlayerDraw(pid, GUI_Playa[pid].Buttons_draws[button], (k.x + 20), (k.max_y - ((k.max_y - k.y)/1.5)), nameid, "Font_Old_10_White_Hi.tga", k.rgb.pressed[1], k.rgb.pressed[2], k.rgb.pressed[3], k.rgb.pressed[4])
 			end
@@ -103,7 +107,11 @@ function ShowButton(pid, button)  --// Show button
 			k.visible = true;
 			ShowTexture(pid, GUI_Playa[pid].Buttons_texture[button])
 			if k.virt_pixel == 0 then
-				GUI_Playa[pid].Buttons_draws[button] = CreatePlayerDraw(pid, anx(pid, (k.x + 4)), any(pid, (k.max_y - ((k.max_y - k.y)/1.5))), k.text, "Font_Old_10_White_Hi.tga", 255, 255, 255)
+				if (k.max_y - k.y) <= 24 then
+					GUI_Playa[pid].Buttons_draws[button] = CreatePlayerDraw(pid, anx(pid, (k.x + 4)), any(pid, (k.y + 2)), k.text, "Font_Old_10_White_Hi.tga", 255, 255, 255)
+				else
+					GUI_Playa[pid].Buttons_draws[button] = CreatePlayerDraw(pid, anx(pid, (k.x + 4)), any(pid, (k.max_y - ((k.max_y - k.y)/1.5))), k.text, "Font_Old_10_White_Hi.tga", 255, 255, 255)
+				end
 				ShowPlayerDraw(pid, GUI_Playa[pid].Buttons_draws[button])
 				if k.texture == "NULL" then
 					UpdateTexture(GUI_Playa[pid].Buttons_texture[button], 0, 0, 0, 0, k.texture)
