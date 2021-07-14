@@ -9,7 +9,7 @@ function OnPlayerMouse(playerid, button, pressed, posX, posY)
 	for j, k in ipairs(GUI_Playa[playerid].Buttons) do
 		if k.visible == true then 
 			if pressed == 0 then
-				if k.virt_pixel == 1 then
+				if k.virt_pixel == 1 then --anx(pid, (k.x + 4)), any(pid, (k.y + 2))
 					SetPlayerDrawPos(playerid, GUI_Playa[playerid].Buttons_draws[k.name], (k.x + 20), (k.max_y - ((k.max_y - k.y)/1.5)))
 					if k.center == 1 then
 						local stling = string.len(k.text)*50;
@@ -22,7 +22,11 @@ function OnPlayerMouse(playerid, button, pressed, posX, posY)
 						UpdateTexture(GUI_Playa[playerid].Buttons_texture[k.name], k.x, k.y, k.max_x, k.max_y, k.texture)
 					end
 				else
-					SetPlayerDrawPos(playerid, GUI_Playa[playerid].Buttons_draws[k.name], anx(playerid, (k.x + 4)), any(playerid, (k.max_y - ((k.max_y - k.y)/1.5))))
+					if (k.max_y - k.y) <= 24 then
+						SetPlayerDrawPos(playerid, GUI_Playa[playerid].Buttons_draws[k.name], anx(playerid, (k.x + 4)), any(playerid, (k.y + 2)))
+					else
+						SetPlayerDrawPos(playerid, GUI_Playa[playerid].Buttons_draws[k.name], anx(playerid, (k.x + 4)), any(playerid, (k.max_y - ((k.max_y - k.y)/1.5))))
+					end
 					if k.center == 1 then
 						local stling = string.len(k.text)*10;
 						SetPlayerDrawPos(playerid, GUI_Playa[playerid].Buttons_draws[k.name], anx(playerid, (k.max_x - (k.max_x - k.x)/2) - ((stling)/2)), any(playerid, (k.max_y - ((k.max_y - k.y)/1.5))))
@@ -59,7 +63,11 @@ function OnPlayerMouse(playerid, button, pressed, posX, posY)
 							UpdateTexture(GUI_Playa[playerid].Buttons_texture[k.name], k.x, k.y, k.max_x, k.max_y, k.texture_pressed)
 						end
 					else
-						SetPlayerDrawPos(playerid, GUI_Playa[playerid].Buttons_draws[k.name], anx(playerid, (k.x + 6)), any(playerid, (k.max_y - ((k.max_y - k.y)/1.5)+1)))
+						if (k.max_y - k.y) <= 24 then
+							SetPlayerDrawPos(playerid, GUI_Playa[playerid].Buttons_draws[k.name], anx(playerid, (k.x + 5)), any(playerid, (k.y + 2)+1))
+						else
+							SetPlayerDrawPos(playerid, GUI_Playa[playerid].Buttons_draws[k.name], anx(playerid, (k.x + 6)), any(playerid, (k.max_y - ((k.max_y - k.y)/1.5)+1)))
+						end
 						if k.center == 1 then
 							local stling = string.len(k.text)*10;
 							SetPlayerDrawPos(playerid, GUI_Playa[playerid].Buttons_draws[k.name], anx(playerid, (k.max_x - (k.max_x - k.x)/2) - ((stling)/2) + 6), any(playerid, (k.max_y - ((k.max_y - k.y)/1.5))+1))
@@ -85,7 +93,11 @@ function OnPlayerMouse(playerid, button, pressed, posX, posY)
 							UpdateTexture(GUI_Playa[playerid].Buttons_texture[k.name], k.x, k.y, k.max_x, k.max_y, k.texture)
 						end
 					else
-						SetPlayerDrawPos(playerid, GUI_Playa[playerid].Buttons_draws[k.name], anx(playerid, (k.x + 4)), any(playerid, (k.max_y - ((k.max_y - k.y)/1.5))))
+						if (k.max_y - k.y) <= 24 then
+							SetPlayerDrawPos(playerid, GUI_Playa[playerid].Buttons_draws[k.name], anx(playerid, (k.x + 4)), any(playerid, (k.y + 2)))
+						else
+							SetPlayerDrawPos(playerid, GUI_Playa[playerid].Buttons_draws[k.name], anx(playerid, (k.x + 4)), any(playerid, (k.max_y - ((k.max_y - k.y)/1.5))))
+						end
 						if k.center == 1 then
 							local stling = string.len(k.text)*10;
 							SetPlayerDrawPos(playerid, GUI_Playa[playerid].Buttons_draws[k.name], anx(playerid, (k.max_x - (k.max_x - k.x)/2) - ((stling)/2)), any(playerid, (k.max_y - ((k.max_y - k.y)/1.5))))

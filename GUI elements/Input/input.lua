@@ -113,6 +113,9 @@ function GUI_KEY_FUNC_PRESSED_TWO(pid, button, nameid)
 				k.pressed = false;
 				SetTextInput(pid, but_text, GetTextInput(pid, but_text));
 			elseif k.name == but_text then
+				if k.pressed == true then
+					SetTextInput(pid, k.name, string.gsub(GetTextInput(pid, k.name), TEXT_LINE, ""))
+				end
 				k.pressed = true;
 				SetTextInput(pid, but_text, GetTextInput(pid, but_text)..TEXT_LINE)
 			end
@@ -147,33 +150,29 @@ function GUI_KEY_WORD(pid, keydown, keyup)
 end
 
 function OnTakedInput(pid, nameid)
-	GUI_Playa[pid].Input_taked = nameid;
-end
-
-function OnMissecInput(pid, nameid)
+	local linii = string.len(nameid);
+	local but_text = string.sub(nameid, 0, linii-5)
 	for j, k in ipairs(GUI_Playa[pid].Input) do
 		if k.visible == true then
-			if k.pressed == true then
-				if GUI_Playa[pid].Input_taked ~= nameid then
-					k.pressed = false;
+				if k.pressed == true then
 					SetTextInput(pid, k.name, string.gsub(GetTextInput(pid, k.name), TEXT_LINE, ""))
-				else
-					GUI_Playa[pid].Input_taked = "null  yeah";
 				end
+		end
+	end
+	GUI_Playa[pid].Input_taked = but_text;
+end
+
+function OnMissecInput(pid)
+	for j, k in ipairs(GUI_Playa[pid].Input) do
+		if k.visible == true then
+			if GUI_Playa[pid].Input_taked ~= k.name then
+				if k.pressed == true then
+					SetTextInput(pid, k.name, string.gsub(GetTextInput(pid, k.name), TEXT_LINE, ""))
+					k.pressed = false;
+				end
+			elseif GUI_Playa[pid].Input_taked == nameid then
+				GUI_Playa[pid].Input_taked = "null yeah";
 			end
 		end
 	end
 end
-
-AddInput({
-	name = "test",   						   	  
-	virt_pixel = 0,
-	center = 0,
-	x = 200,
-	y = 77,
-	max_x = 400,  					
-	max_y = 100,
-	texture = "inv_back",   				     
-	text = "Type your text",    						
-	rgb = {255, 255, 255, 255}			 
-})
